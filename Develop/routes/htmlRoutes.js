@@ -1,10 +1,8 @@
 const router = require('express').Router();
-const store = require('..db/store');
 const path = require('path');
 
 router.get("/notes", function(req, res) {
-    store.getNotes().then(notes => res.json(notes))
-    .catch(err => res.status(500).json(err));
+    res.sendFile(path.join(__dirname, '../public/notes.html'))
 });
 
 router.get('/', function(req, res) {
