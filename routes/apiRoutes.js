@@ -3,20 +3,20 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
 const readNotes = () => {
-    const data = fs.readFileSync('./Develop/db/db.json', 'utf8');
+    const data = fs.readFileSync('./db/db.json', 'utf8');
     return JSON.parse(data);
 };
 
 const saveNotes = (notes) => {
-    fs.writeFileSync('./Develop/db/db.json', JSON.stringify(notes));
+    fs.writeFileSync('./db/db.json', JSON.stringify(notes));
 };
 
-router.get('/api/notes', (req, res) => {
+router.get('/notes', (req, res) => {
     const notes = readNotes();
     res.json(notes);
 });
 
-router.post('/api/notes', (req, res) => {
+router.post('/notes', (req, res) => {
 const notes = readNotes();
 const userNote = {
     title: req.body.title,
